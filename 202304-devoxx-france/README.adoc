@@ -1,0 +1,774 @@
+= Devoxx France 2023 - Buzz words and synthesis
+Sébastien VICARD <icon:github[] https://github.com/Edhilion/[GitHub]
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== MERCREDI
+
+=== Présentation du salon
+
+* https://www.devoxx.fr/, du 12 au 14/04/2023
+* Et c'est parti pour Devoxx France 2023 !
+
+=== 09h30 - 12h30 : Avancez avec HashiCorp Vault, au mépris du danger, là où aucune solution de sécurité n'a osé aller jusqu'alors !
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/924b2b8bb33e52d196d85ec6133f3f0a071faa5f/willy_malvault[Willy malvault], https://cfp.devoxx.fr/2023/speaker/70f22ea5d017da467b2f21ea4348808af054fe43/sven_szejwach[Sven Szejwach]
+--
+*Willy* : Responsable d'offre, évangéliste, architecte et coach {Cloud Native, Cybersécurité} chez Sogilis à Grenoble. Je suis titulaire d'un doctorat en informatique distribuée (INRIA 2011). Mon kif c'est la vulgarisation, le théâtre d'impro et la communication. Je me suis donc lancé naturellement dans les talks il y a déjà quelques années, et je propose même du coaching/peer reviewing pour les speakers tech.
+
+Accessoirement organisateur du Snowcamp depuis 2022.
+
+Twitter : @wmalvault
+
+Blog: https://blog.sogilis.fr/
+
+*Sven Szejwach* : CTO at Squarescale, fiddling enthusiast, automation expert and DevOPS aficionado
+
+Twitter : @SSZEJWACH
+
+Blog: https://www.squarescale.com
+--
+
+----
+Comment démarrer une chaîne de confiance ? Comment gérer automatiquement la rotation de vos secrets et clés de sécurité (révocation et renouvellement) ? Comment éviter d'avoir un compte partagé par tous vos services pour accéder à la base de données ? Comment en finir avec les Post-It de mot de passe collés sous le clavier de vos collègues ?
+
+Si ces sujets vous hantent toutes les nuits, la cybersécurité est un sujet qui vous tient à cœur !
+
+Rejoignez-nous dans ce workshop autour de Hashicorp Vault et des bonnes pratiques de sécurité dans le cloud. Venez découvrir comment opérer un cluster Vault, comment intégrer une nouvelle application dans votre chaîne de confiance, comment établir une stratégie de policies et encore beaucoup de choses indispensables à la sécurité.
+
+Une stack de test sera mise à disposition pour tous les participants (Docker par défaut, puis une stack auto-hébergée, en fonction des envies et appétences des participants).
+----
+
+==== Notes
+
+NOTE: Une note
+
+===== Thème 1
+
+foo
+
+===== Thème 2
+
+bar
+
+=== 09h30 - 12h30 : Value types et Pattern matching : 1 partout, données au centre
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/70365c89d2a734da0d24d091f7ec0af77ba90701/jose_paumard[José Paumard], https://cfp.devoxx.fr/2023/speaker/b967a0dc26fb6feaaa8795f375103b0d7aff319e/remi_forax[
+Remi Forax]
+
+*José* : José est membre du Java Platform Group chez Oracle en tant que Java Developer Advocate. Il a été maître de conférences à l'université Paris 13 pendant 25 ans et est intervenu auprès de sociétés en formation et expertise. Il anime le blog technique "Java le soir" et contribue à divers projets Open source. Impliqué dans la communauté Java, il est trésorier de l'association BJPC, organisatrice des soirées du Paris JUG et cofondateur de Devoxx France qu'il a coorganisé les 3 premières années. Java Champion, plusieurs fois Java Rockstar speaker régulier pour Devoxx (FR, BE, UK), JavaOne, de nombreux JUG francophones, il est également auteur pour Java Magazine.
+
+Twitter : @JosePaumard
+
+Blog: http://blog.paumard.org/
+
+*Rémi* : Java Plombier, Maitre de Conférence, Virtual Machine Whisperer, martirise ses pauvres étudiants, complexifie Java en étant experts pour les JSR 292, 335 et 376, développe des librariries et langage dynamiques open source utilisés ou pas.
+
+Twitter : @over_my_dead_body
+
+Blog: http://forax.github.io/
+
+----
+La modélisation de données en Java est l'un des aspects du langage qui a très peu évolué depuis 15 ans. Les choses changent, puisque Valhalla commence à publier des éléments intéressants. La version LW5 apporte des classes primitives et des value classes. Le projet Amber remet les données au centre des applications : les records permettent de meilleures modélisations, et le Pattern Matching ainsi que les Types Scellés permettent de mieux écrire les traitements. Dans le futur, Valhalla permettra d'unifier les types objet et les types primitifs et de gérer différemment les valeurs nulles. Amber va continuer de développer le pattern matching avec les déconstructeurs pour les classes classiques et les patterns nommés. Ces nouvelles approches vont apporter de nouvelles façons d'organiser les applications, de mieux distribuer le code en modules indépendants, de créer des données sous de nouvelles formes et d'avoir de meilleures performances pour nos traitements en mémoire.
+----
+
+=== 09h30 - 12h30 : Docker Compose 101
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/2fbe27e444d83edf7e8819f9f629a49268711fc0/guillaume_lours[Guillaume Lours], https://cfp.devoxx.fr/2023/speaker/e093b878c9a06101b3291a9c1aa28dbd0dd7533a/nicolas_de_loof[
+Nicolas de Loof], https://cfp.devoxx.fr/2023/speaker/204604c60ffd82a83fc282982845cd061645fcd3/djordje_lukic[
+Djordje Lukic]
+
+*Guillaume* : Sr Software Engineer @docker, Compose Specification maintainer, working on Docker Dev Environments and Compose
+
+Twitter : @glours
+
+Blog: https://www.docker.com
+
+*Nicolas* : ex-Docker Captain ("Quoi d'neuf Docker" sur Youtube) Staff Software Engineer chez Docker Fondateur du BreizhCamp
+
+Twitter : @ndeloof
+
+Blog: https://blog.loof.fr
+
+*Djorje* : Staff Software Engineer at Docker, loves making developer tools
+
+Twitter : @rumpl
+
+Blog: https://rumpl.dev
+
+----
+Vous avez déjà entendu parlé de Docker Compose ? Peut être l'utilisez vous déjà un peu ?
+Nous vous proposons de découvrir toutes les facettes de cet outil en construisant une application ensemble, de manière itérative et en 100% live coding.
+
+Depuis un exemple simple, nous aborderons toutes les astuces pour être un développeur efficace: services multiples, gestion des volumes et du réseau, build avancé avec des ressources protégées par ssh, multi-plateformes...
+
+Et qui sait, peut être que nous irons même jusqu'à déployer une application WebAssembly.
+----
+=== -------------------- REPAS --------------------
+
+=== 13h30 - 16h30 : Automatisez vos tests utilisateurs avec Cypress
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/210426e5a743e1f220b73216b59a3809d92c2094/gerome_grignon[Gérôme Grignon], https://cfp.devoxx.fr/2023/speaker/97df1276e896faedcc0ed30e58c5905679478c9b/anthony_pena[
+Anthony Pena]
+
+*Gérôme* : Développeur Web chez SFEIR.
+Consommateur de projets open-source le jour, contributeur la nuit.
+
+Head of OSPO @SFEIR Stackblitz Community Advocate
+
+Twitter : @GeromeGrignon
+
+*Anthony* : Codeur et blogueur le jour et dévoreur de manga la nuit, vous me verrez souvent parler de Java, JavaScript, Typescript, Rust ou de test, parfois un peu (beaucoup) de jeux-vidéos ou de bricolage de console.
+
+Twitter : @_Anthony_Pena
+
+Blog: https://k49.fr.nf
+
+----
+Poussez la porte pour venir découvrir avec nous un outil de testing end-to-end pensé par et pour les développeurs.
+
+Aujourd’hui plesbicité par la communauté, Cypress est la promesse tenue d’une solution pour en finir avec les tests e2e longs et lents, allant jusqu’à proposer aujourd’hui une fonctionnalité de component testing.
+
+Pendant cet atelier, nous explorerons ensemble une application web grâce à Cypress au travers de différents parcours utilisateurs pour découvrir les possibilités offertes par ce framework, ainsi que ses limitations.
+----
+
+=== 13h30 - 16h30 : (Slow (code) retreat)
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/3110faf2bcbb504f5395a237b5e176c6006266f7/philippe_bourgau[Philippe Bourgau], https://cfp.devoxx.fr/2023/speaker/55682b074bf44988244bb586f4e98d21d20a4d61/mirna_mahfoud[
+
+Mirna Mahfoud]
+
+*Philippe* : Coach eXtreme Programming et Hacktivist du rythme soutenable !
+
+La vie est trop courte pour perdre son temps! J'aide les développeurs à atteindre un rythme soutenable et une productivité durable grâce au refactoring continu de leur code, mais aussi de leur environnement de travail !
+
+Je travaille actuellement à Murex
+
+Twitter : @pbourgau
+
+Blog: https://philippe.bourgau.net
+
+*Mirna* : C++ developer, technical coach, world traveler, poetry and art lover, Jane Austen fan, tea fanatic.
+
+Twitter : @Mirna_Mahfoud
+
+Blog: https://www.murex.com/
+
+----
+"La Simplicité, l'art de maximiser le travail non-fait, est essentielle!"… On n'y est pas !
+
+Il serait peut être temps de faire quelque chose contre le burn-out de plus en plus présent dans notre industrie?
+
+Venez essayer le slow-programming ! Vous découvrirez et expérimenterez 6 différentes pratiques de slow-programming: Slow pair programming, Slow feedback, Slow code-reviews, Slow TODO list, Slow coding, et Slow ROTI ! Vous pouvez vous attendre à:
+
+Moins de stress, en vous concentrant sur ce que vous faites MAINTENANT, dans le moment présent
+Plus de création de valeur, en concentrant vos efforts sur ce qui importe vraiment
+Moins de dette technique
+De meilleures interactions avec vos collègues
+De meilleures décisions grâce à plus de clarté sur ce qu'il faut faire
+De meilleures chances de gérer les défis éthiques de notre industrie
+Des familles plus heureuses avec moins de stress ramené à la maison!
+Une forme de pratique du zen au travers de la programmation
+Plus d'entraide
+Venez tester notre slow-dojo!
+----
+
+=== 13h30 - 16h30 : Des tuyaux sur les pipelines
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/a2eec3d78572a5e31b354127520841d753284c1d/pierre-antoine_gregoire[Pierre-Antoine Grégoire], https://cfp.devoxx.fr/2023/speaker/5ec0b5afa0f1ef5a7e180acf4f7c6b3a611fcbb7/philippe_charriere[
+Philippe Charrière]
+
+*Pierre-Antoine* : During the 20+ years of my IT career, I've had the possibility to gradually take a few more steps back in order to see the big picture and try to leverage the best from what I've learned in order to (hopefully) achieve neat design and insightful software. On the side I created and am still involved in various open source projects. I am president since 2010 of the Java User Group of Luxembourg (YaJUG), I've spoken in multiple conferences, and co-initiated the Devops Mercenaries, a friendly group of experts focused on improving the collaboration between business, development and operations. I'm also organizing Voxxed Days Luxembourg, the number one development conference in Luxembourg, fully organized by a non-profit organization: YaJUG.
+
+Twitter : @zepag
+
+*Philippe* : Senior Customer Success Engineer at GitLab +
+Plat préféré: Pot au feu +
+Cocktail préféré: Spritz +
+Activités: Geek, Pêche, Cuisine, Série TV +
+Signe particulier: grosse addiction aux emojis +
+GDG Cloud et IOT Lyon co leader +
+BlendWebMix Responsable du comité éditorial technique +
+Ex ScalaIO team member, Ex MixIT team member
+
+Twitter : @k33g_org
+
+Blog: https://k33g.gitlab.io/
+
+----
+Vous avez besoin d'intégrer une chaîne de build, simple ou très élaborée, et de la connecter à une chaîne de déploiement efficace et contrôlée ?
+
+Vous voulez pouvoir observer et analyser l'exécution, la performance, la sécurité de ces flux vitaux pour la dynamique de votre système?
+
+Venez découvrir avec nous comment permettre à la plomberie de votre système de rester saine, performante et adaptable.
+
+Nous allons présenter des concepts et patterns, ainsi que les solutions disponibles pour implémenter l'intégration, l'inspection et le déploiement continus.
+----
+
+=== 17h00 - 17h30 : Détectez et corrigez automatiquement les problèmes les plus fréquents avec Apache Kafka
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/eb1223f6cde5906f7ac2fb5efd83375a56880ad8/florent_ramiere[
+Florent Ramière], https://cfp.devoxx.fr/2023/speaker/e637796801ca478e0dd006374aa58e8e67c79c95/jean-louis_boudart[Jean-Louis Boudart]
+
+*Florent* : Florent Ramière a plus de vingt années d'expérience dans le développement logiciel et la conduite de projets informatiques. Après plus de 10 ans d'entrepreunariat, Florent à rejoint la société Confluent la société derrière Apache Kafka où il a accompagné pendant 5 ans les grands comptes en Europe. Il s'occupe désormais de simplifier l'usage du streaming chez Conduktor.
+
+Twitter : @framiere
+
+Blog: https://conduktor.io
+
+* Jean-Louis* : Jean Louis Boudart has been working as an independent Java and DevOps consultant. He has been developing, designing/building architecture, coaching developers, assisting customers to build robust and ready to use applications.
+
+Over the last few years, he specialized in a more DevOps-focused role and helped companies to architect and deploy monitoring solutions based on real-time streaming infrastructure. He is an opensource addict, and has been involved in many projects.
+
+Twitter : @jlboudart
+
+Blog: https://www.conduktor.io
+
+----
+Comment pouvez-nous nous assurer que les applications utilisent efficacement les ressources Kafka, sachant qu'une majeure partie de la configuration est effectuée côté client... si loin des yeux attentif des chers ops et architectes?
+
+Parmi les problèmes les plus courants, citons les
+
+* producteurs dont la taille des batch, linger est configurée de manière inefficace
+* producteurs qui n'utilisent pas de compression, ou ont un ack inadéquat
+* consommateurs un peu trop optimistes
+* consumer groups avec plus de membres que de partitions
+* création de topic sans convention de nommage, ou avec trop de partitions
+* topics qui mélangent involontairement des données avec des schémas ...
+* applications qui ne gèrent pas les erreurs de déserialization
+* applications qui ne gèrent pas l'idempotence
+* applications qui ne gèrent pas les rebalance storm
+* etc.
+
+Rejoignez-nous pour discuter de ces problèmes, mais surtout des outils qui peuvent être mis en place pour les tuer ... net!
+----
+
+=== 17h45 - 18h15 : Les secrets internes de Spring
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/8af709e6d3964f92df2e17b0c69ab4869e4a1abc/carl_azoury[Carl Azoury]
+
+*Carl* : Consultant, développeur et formateur sur la stack Java/JEE pendant 10 ans, Carl Azoury est le CEO (Chief Enabler Officer) de Zenika, société qu’il co-fonde en 2006. Entrepreneur dans l’âme il souhaite (ré)inventer le modèle de la SSII. De formation d’ingénieur Agronome de Paris Grignon, il appréhende la complexité du vivant et sa transposition à l’entreprise. Zenika fête ses 10 ans cette année, totalise 200 collaborateurs dans 6 agences en France et se classe 4ième Great Place to Work,en 2015. Parmi ses sujets de prédilection, la Qualité de Vie au Travail et l’Innovation. Carl est aussi membre du think tank Entreprise & Progrès, mouvement qui pense que "le progrès social est une condition du progrès économique"
+
+Twitter : @cazoury
+
+Blog: http://www.zenika.com
+
+----
+Les secrets internes de Spring.
+
+Spring est un framework qui existe depuis 2003 qui a révolutionné l'architecture des applications et la façon de développer. On utilise beaucoup Spring et Spring Boot, mais parfois on ne sait pas comment cela fonctionne en interne.
+
+Ces mécanismes n'ont pas changés et toutes les fonctionnalités de Spring reposent dessus. Mon but, en trente minutes, et de faire comprendre l'intérêt d'un tel outil et surtout montrer comment fonctionne le cycle de vie des Beans, ou Spring fait toute sa magie, et le démontrer dans des exemples concrets (Gestion d'une Resource, Gestion d'un flux RSS en local vs à distance, gestion d'un filtre http en mémoire, transactions...).
+
+Au delà de ces fonctionnalités, montrer le point commun entre tous, comprendre le cycle de vie d'un bean Spring, et savoir répondre à la question : "A quoi peut servir un BeanFactoryPostProcessor" ?
+----
+
+=== 18h30 - 19h00 : De la première ligne de code au succès : REX d’un projet open source
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/b2da3feb97828d6087d24c7f01f4f0a3c1611a1a/flavien_normand[Flavien Normand]
+
+*Carl* : Consultant Angular, Développeur Open Source, Joueur de MMO, Pêcheur, enfin quand j'ai le temps.
+
+Twitter : @Supamiu_
+
+Blog: http://www.flavien-normand.fr
+
+----
+On a tous eu des idées de projets pendant qu'on faisait nos études, mais que faire quand ça marche? Comment on gère l'administratif? Comment on gère l'infra? La communication? La traduction? Et tant d'autres choses auxquelles je n'avais pas pensé.
+
+Dans ce talk, je vous décrit mon parcours semé d'embuches, depuis 5 ans, entre technique et administratif, tout ce que j'aurais aimé savoir quand j'ai lancé mon projet, qui a évolué pour devenir un produit complet, avec 500 000 utilisateurs actifs mensuels, une traduction en 10 langues, une communauté active et un seul développeur: moi.
+----
+
+=== 18h30 - 19h00 : De la première ligne de code au succès : REX d’un projet open source
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/06526149853bd11db7f30a2391594deefbacd805/benoit_prioux[Benoît Prioux]
+
+*Benoît* : Après 12 ans chez Lectra, éditeur de logiciel dans le monde de la mode basé à Bordeaux, je suis maintenant Senior Software Engineer chez Alan, l'assurance Santé qui fait simple. Développeur Java, Kotlin et tout récemment Python, je suis passionné par tout ce qui finit en DD : TDD, BDD, DDD, ...
+
+Twitter : @binout
+
+Blog: http://binout.github.io/javaonemorething/
+
+----
+🎉 Enfin vous avez obtenu quelques jours de télétravail ou alors vous venez d’accepter un nouveau poste en full remote, ce n’est que le début ! 🙈
+
+💪 Vous allez devoir apprendre à adapter vos méthodes de travail pour collaborer en asynchrone avec vos collègues.
+
+💚Il y a un peu plus de 2 ans, j'ai vécu cette expérience en rejoignant Alan, où la communication écrite et asynchrone est au coeur de la culture d'entreprise.
+
+🤓 Dans cette présentation, je vous propose un retour d’expérience sur nos méthodes de travail et quelques trucs et astuces qui pourront vous aider.
+----
+
+== JEUDI
+
+=== 10h45 - 11h30 : Hypermedia IRL
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/e1b900dbb2082758d75f33fcd0e1945858bbae30/roman_garcia[Roman Garcia], https://cfp.devoxx.fr/2023/speaker/a51de1ec0412623e55a900ebb84088a24dcbb035/hugo_thomas[Hugo Thomas]
+
+*Roman* : I've been working as a fullstack web developer at Cosium for 9 years.
+
+Blog: https://www.cosium.com/
+
+*Hugo* : ?
+
+----
+Dans un souci de recherche de la meilleure stack pour ses APIs, Cosium a choisi de migrer ses APIs HTTP dites "classiques" (REST niveau 2) vers une contrainte d'architecture hypermedia (REST niveau 4).
+
+L'utilisation d'HATEOAS (Hypermedia As The Engine Of Application State) semble encore peu adoptée alors que son concept est central à l'architecture REST. Est-ce dû à une complexité d'implémentation trop élevée ?
+
+Cette présentation a pour but de montrer comment nous arrivons à exposer une API hypermedia avec Spring HATEOAS, à la consommer avec Ketting.js, et combien il peut être facile de tirer avantage de la flexibilité fournie par cette architecture.
+----
+
+=== 11h45 - 12h30 : Bien choisir sa base de données
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/e37403466e1fd9504672b729151e5b2b2f115e77/sebastien_keller[Sébastien Keller], https://cfp.devoxx.fr/2023/speaker/7ca92d0aaf5c831ac720dbfc764969b3ea1c6a8f/alexandre_budzko[Alexandre Budzko]
+
+*Sébastien* : S’il n’est pas en train de faire sa séance de bloc quasi-quotidienne, vous pourrez trouver Sébastien en train de répondre à des questions sur son diagramme d’archi ou de lire le code de Kafka Stream pour trouver le bon TaskAssignor.
+
+Après 11 ans, et quelques générations de juniors formées, Sébastien se décide enfin à partager son expérience à un public plus large.
+
+Côté métier, il a travaillé sur des codebases aussi variées que de l’assurance, des sites e-commerce et plus récemment, de la Big Data. Il pourra vous parler de toutes les mauvaises idées qu’il a croisé sur son chemin, mais aussi des bonnes !
+
+*Alexandre* : Jeune developpeur fullstack, passionné par la tech et en particulier le free software
+
+Blog: https://www.takima.fr/
+
+----
+RDBMS ? Orienté colonnes ? Documents ? Timeseries ? Graphes ? Distribué ou non ? Pas facile de faire le bon choix lorsqu’on est perdu dans toutes ces notions. Dans ce talk, on est là pour t’aider à faire le meilleur choix de base de données pour ta prochaine application ! Comme la solution universelle n’existe pas, on va plutôt te présenter différents critères de choix, les pièges et antipatterns qu’il faut éviter, ainsi qu’une lecture analytique de chaque type de DB. On va notamment parler des grands types de bases de données, de transactions et de distribution de la donnée. En sortant, tu te poseras les bonnes questions pour choisir ta BDD et tu n’auras pas besoin de chercher à faire des jointures dans Elastic !
+----
+
+=== 13h00 - 13h15 : Single Sign On en 15mn sans modifier son code
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/285764f7670247627233f9ae623eeca931f4860e/florian_bernard[Florian Bernard]
+
+*Florian* : Après un début de carrière en 2009 en tant que développeur, j'ai peu à peu évolué sur des rôles de tech lead / architecte (dans plusieurs sociétés) et actuellement j'occupe le poste de CTO chez OpenAirlines. Passionné, j'aime apprendre et partager sur tous sujets qui touchent au développement et à l'architecture logicielle (mais pas que :-)).
+
+Twitter : @fbe64
+
+Blog: https://www.openairlines.com/
+
+----
+Ajouter le support du SSO (Single Sign On) dans une application web peut être parfois compliqué et nécessite de la rigueur et de respecter les bonnes pratiques pour assurer la sécurité. En 15 minutes, nous allons voir comment construire un portail SSO qui vous permettra de sécuriser n'importe quelle application web avec OpenID Connect sans modifier une ligne de code ! Le tout grâce à des composants libres et gratuits (Docker, Apache, Keycloak...).
+----
+
+=== 13h00 - 13h15 : Faire du web ou du mobile ? Et pourquoi pas les deux !
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/e7f49dafced974fd1f34a76ca2da8f1accd8395e/coline_therial[Coline Therial]
+
+*Florian* : I'm 26 years old and I have been working as a Mobile Developper at Agorapulse for 2 years
+
+----
+Chez Agorapulse, nous avons relevé un défi : créer une application iOS et Android à moindre effort. Mais comment ? Grâce à l'étonnante similarité entre le développement web sur Angular et mobile sur Ionic, un framework hybride. Notre recette : un backend partagé, un store partagé côté frontend, des releases automatisées... Et surtout, une bonne collaboration entre des développeurs qui parlent le même language. Nous allons partager avec vous nos expériences et nos réussites, ainsi que les pièges à éviter.
+----
+=== -------------------- REPAS --------------------
+
+=== 13h30 - 14h15 : Loi de Conway : lorsque les bonnes pratiques ne suffisent pas
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/e53a5bd88c58e5ebf1fa221db04f2b82391656f0/julien_topcu[Julien Topçu]
+
+*Julien* : Tech Coach chez Shodo, j'accompagne le développement de logiciels à forte valeur métier en usant de techniques issues du Domain-Driven Design, le tout propulsé en Xtreme Programming dans la philosophie Kanban #NoEstimates. Membre de la fondation OWASP, j'évangélise sur les techniques de sécurité applicative afin d'éviter de se faire hacker bien comme il faut.
+
+Twitter : @JulienTopcu
+
+Blog: https://beyondxscratch.com/
+
+----
+Avez-vous des APIs découpées d'une manière qui semble au final arbitraire et orthogonale au métier ? Que l'architecture décidée n'est jamais vraiment respectée ni réalisée ?
+
+Vos utilisateurs ont toujours du mal à récupérer les informations dont ils ont besoin, alors que vous avez mis le paquet sur le métier et l'expérience utilisateur ?
+
+N'avez-vous jamais remarqué, que bien vous suivez les bonnes pratiques, le logiciel qu'on construit s'écarte souvent de la vision produit, technique et parfois même des besoins de l'utilisateur ?
+
+Et si on vous disait que tout cela est lié, et qu'il existe une force qui a une influence certaine sur votre produit, votre expérience utilisateur, votre architecture et même la qualité de votre logiciel ?
+
+Venez découvrir la Loi de Conway ! Cette force méconnue qui a un pouvoir certain sur ce que vous construisez quel que soit votre métier. A travers des études scientifiques et des retours du terrain sur des exemples réels, nous verrons ses impacts sur les différents aspects du logiciel et nous apprendrons comment les apprivoiser.
+----
+
+=== 14h30 - 15h15 : 5 ans de bien et de moins bien avec Kafka
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/23e082f25826e7760c51d0107206a4b4f43c869a/nelson_dionisi[Nelson Dionisi], https://cfp.devoxx.fr/2023/speaker/8a4685ac50148cf4b357a4059a0d7e3c3ce46d5d/matthieu_mouminoux[Matthieu Mouminoux]
+
+*Nelson* : Engineering Director @Mirakl
+
+*Matthieu* : Principal Architect @Mirakl
+
+Twitter : @mouminoux
+
+----
+Kafka, c'est beau, c'est rapide, et ça parait simple, mais en fait... non !
+
+Chez Mirakl, on utilise Kafka depuis plus de 5 ans comme moyen de communication principal entre nos micro-services. Comme tout le monde, on a commencé par utiliser Kafka de manière simple, mais on est vite tombé dans les subtilités et complexités de la techno.
+
+Dans ce talk, on vous présente un retour d'expérience sur notre utilisation, ce qu'on a bien fait et surtout ce qu'on a mal fait, avec des exemples concrets de problèmes qu'on a eu. On parlera dead letter, garantie de délivrance des messages, problématique d'ordonnancement des messages... On vous expliquera aussi comment on a planté tous nos clients grâce à un seul message Kafka (réalisé par des professionnels, à ne pas reproduire chez vous) ! On vous donnera également quelques points importants à avoir en tête avant de partir en production.
+
+Bref, un petit melting pot des choses à faire et à ne pas faire avec Kafka d'après notre expérience.
+----
+
+=== 15h30 - 16h15 : 5 ans de bien et de moins bien avec Kafka
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/b2182bb12759a8b0d6e8d5cd0b3b247eec0a354d/fred_simon[Fred Simon]
+
+*Nelson* : Fred est le cofondateur de JFrog, et l’un des architectes les plus respectés de la communauté des développeurs, avec plus de 20 ans d’expérience Java et Open Source. Avant JFrog, Fred a fondé AlphaCSP, où il dirigeait 5 branches dans le monde en tant que CTO et visionnaire. Fred a traversé les évolutions de technologies dans son rôle de programmateur, architecte, consultant, et speaker. Fred est titulaire d’un Masters in Computer Science de l’école Centrale de Lille.
+
+Twitter : @freddy33
+
+Blog: http://www.jfrog.com/
+
+----
+Après 14 ans de DevOps, il est temps pour nous de regarder ce qui font les forces et les faiblesses du mouvement DevOps. Il y cinq ans, nous avons écrit le livre “Liquid Software”. Nous étions sûrs qu’aujourd’hui la vision serait âgée et dépassée, mais elle est plus que jamais un facteur déterminant dans le succès d’une transformation digitale. Dans cette session, je parlerai du présent et du futur du DevOps dans notre industrie changeante, et comment votre entreprise peut bénéficier au maximum du mouvement DevOps.
+----
+
+=== 15h30 - 16h15 : Ah, tu peux faire ça en CSS maintenant ?
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/a6b8edfe906dcb1f594f1037f31a9915739fc0e7/raphael_goetter[Raphael Goetter]
+
+*Raphael* : Webmunster senior. Valérie Damidot du HTML, MacGyver du CSS, Cristina Cordula chez Alsacreations. Ambassadeur du Lorem Ipsum alsacien, amateur de picon-bière et lauréat de la Bretzel d'Or 2017 (si si, c'est vrai !) et accessoirement formateur, conférencier et auteur de divers livres sur CSS.
+
+Twitter : @goetter
+
+Blog: http://www.goetter.fr
+
+----
+CSS a bien évolué depuis ses balbutiements en 1996 et les guerres des navigateurs. Simple langage de description à ses débuts, il devient un véritable outil de programmation, embarquant variables, imbrications, conditions et un peu plus chaque jour. Les évolutions sont parfois si nombreuses qu'il est difficile de tout suivre. Ça tombe bien car c'est justement ce qu'on va faire : un rapide panorama d'une 15aine de fonctionnalités modernes mais déjà utilisables en production (variables, sélecteurs, cascade, propriétés logiques, etc.)
+----
+
+=== 16h45 - 17h30 : Auth et systèmes distribués: ne jetons pas le bébé avec l'eau du bain
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/76606cd0-6261-44b2-ad0e-3518a0e66995/clement_delafargue[Clément Delafargue], https://cfp.devoxx.fr/2023/speaker/36654bf2e501abdf2918e7a3cb640eb326221393/geoffroy_couprie[Geoffroy Couprie]
+
+*Clément* : I'm a functional programmer, working primarily with Haskell at Bellroy
+
+Twitter : @clementd
+
+Blog: https://cltdl.fr/me
+
+*Geoffroy* : Geoffroy Couprie est consultant indépendant. Spécialiste en sécurité logicielle, il travaille à rendre le code plus sûr, et les outils cryptographiques plus utilisables. Il étudie plus particulièrement la sécurité des protocoles d'authentification et d'échange de messages.
+
+Twitter : @gcouprie
+
+Blog: http://unhandledexpression.com
+
+----
+Depuis l'essor des architectures microservices, l'auth a bien évolué. Les solutions basées sur un serveur d'authorisation central sont certes simples à mettre en place, mais rendent les systèmes moins résilients. Si le serveur d'auth tombe, l'ensemble de la plateforme tombe. De l'autre côté du spectre, des systèmes à base de jetons au porteur (comme JWT) permettent de s'affranchir des contraintes d'un système centralisé. En revanche, de tels systèmes sont notoirement complexes à mettre en place et nécessitent une bonne dose d'expérience pour éviter les erreurs.
+
+Dans cette conférence nous vous présenterons:
+
+comment choisir entre un système d'auth centralisé et un système distribué
+un tour d'horizon des solutions possibles pour les jetons au porteur;
+les différentes architectures d'auth possibles (passerelle d'auth, intégration directe, …);
+les éléments indispensables à mettre en place dans un tel système (rafraichissement des tokens, révocation, rotation des clés, …);
+la plateforme biscuit, construite autours de ces use cases.
+----
+
+=== 16h45 - 17h30 : Comment être condamné par la CNIL
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/5b5d6616b013accfd7b71222afe5031991352262/juliette_audema[Juliette Audema]
+
+*Juliette* : Je m'appelle Juliette, j'ai 31 ans, j'ai fait une reconversion en tant que développeuse à l'automne 2018 avec le bootcamp en Ruby On Rails "The Hacking Project". Je suis originellement diplômée de Sciences Po Grenoble (master Affaires Publiques) et j'ai été chargée de projets dans l'éducation musicale. Actuellement je suis Software Engineer chez Aircall, après avoir travaillé en start-up et dans une agence web. À côté de mon travail, je suis impliquée dans plusieurs communautés de code: les Women On Rails, pour lesquelles j'édite une newsletter (https://womenonrails.substack.com/) et Paris.rb. En-dehors du code j'aime tricoter, broder, coudre, courir et faire du yoga.
+
+Twitter : @ajuliettedev
+
+----
+Spoiler alert: bien entendu, je ne vais pas vous apprendre à être condamné par la CNIL ! La CNIL a sorti un guide RGPD (Règlement Général sur la Protection des Données) pour l'équipe de développement, où elle donne des conseils aux développeuses et développeurs afin d'être en conformité avec le RGPD, notamment dans le développement. Dans ce talk, nous plongerons dans les bonnes pratiques recommandées par la CNIL et nous verrons aussi différents cas de sanctions données par la CNIL par des entreprises qui ont, elles, été condamnées.
+----
+
+=== 17h45 - 18h15 : Les post-mortems ou comment sortir heureux d’un carnage
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/bbe9b3c1f85cee43b11e53cb2bc8e612b89f179a/lise_quesnel[Lise Quesnel]
+
+*Lise* : Lise est développeuse web, et aime accompagner les équipes tant sur le plan humain que technique. Les bonnes pratiques de développement sont pour elle le ciment de tout projet. Grande curieuse, elle aime découvrir sans cesse de nouvelles choses.
+
+Twitter : @QuesnelLise
+
+----
+Une fonctionnalité, un projet, une réunion, ça ne se passe pas toujours bien. Loin de là. C’est parfois même un carnage. 😱 Que fait-on dans ces cas-là ? Ça s’est terminé dans les larmes, le sang et la sueur mais qu’importe ! On met tout ça sous le tapis, c’est fini, on en parle plus. 🙈
+
+Pour que cela recommence encore la prochaine fois ? Pour que tout le monde en souffre sans oser en parler ? Pas la peine !
+
+Alors on prend notre courage à deux mains, et on organise un POST-MORTEM. Mais qu'est-ce que c'est ? À quoi cela sert-il ? Et comment le mettre en place ? 🤔
+
+Vous découvrirez dans ce talk les différentes étapes d'un post-mortem réussi et comment l'animer au mieux pour que chacun et chacune puisse être heureux.se après un tel carnage, sans pour autant être psychopathe ! 😌
+----
+
+=== 18h30 - 19h00 : Accélérer vos livraisons d'API avec Microcks
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/68a68cee98fb1247378478a3c1aeebd32a6dc91d/laurent_broudoux[Laurent Broudoux]
+
+*Laurent* : Laurent est architecte solution, spécialisé sur les sujets cloud-native mêlant Kubernetes, APIs et Intégration en Enterprise. Laurent a démarré il ya 5 ans le projet Microcks : une plateforme permettant de gérer les mocks et le test de contrat d'APIs et microservices.
+
+Twitter : @lbroudoux
+
+Blog: https://medium.com/@lbroudoux
+
+----
+Les API sont partout ! Création de nouveau produit, intégration client et partenaire, communication frontend à backend, orchestration de microservices : ces cas d'utilisation nécessitent des API. Mais cela s'accompagne de défis : comment obtenir une boucle de rétroaction rapide sur la conception ? Comment permettre à différentes équipes de travailler en autonomie sans avoir à attendre la mise en place d’une API ? Comment faire face aux tests de rétrocompatibilité lorsque vous livrez la version 18.3 de votre API ? C'est exactement le défi relevé par Microcks. Microcks permet aux développeurs de tirer parti de leurs ressources OpenAPI, AsyncAPI, GRPC, GraphQL et Postman pour simuler rapidement des API avant de les écrire !
+
+Dans cette session, nous présenterons brièvement Microcks et son fonctionnement. Ensuite, nous nous plongerons dans la simulation d'une OpenAPI REST et l'exécution de tests de conformité. Nous vous expliquerons comment cela peut aider vos équipes à mieux travailler ensemble. Enfin, nous vous expliquerons comment Microcks prend également en charge les API asynchrones et événementielles.
+----
+
+=== 18h30 - 19h00 : Core Web Vitals: Mettez votre application sur orbite avec les meilleurs pratiques
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/192407701786bbf68e9116295ac390c67e1179ae/nicolas_frizzarin[Nicolas FRIZZARIN]
+
+*Nicolas* : Google Developer Expert in Web Technologies and OpenJs Foundation Member, Nicolas is a FontEnd specialist and user Interface Designer from Metz, France.
+
+He works as a Developer Advocate and Engineering Manager at Sfeir Luxembourg. His daily mission is to help the teams to make robust, powerful and beautiful web applications
+
+Besides that, Nicolas is a speaker, and likes to contribute to the community by giving talks, trainings, writing articles or participating in open source projects
+
+Twitter : @Nicooss54
+
+----
+Lorsque l'on développe une application web il est primordial de respecter un certain niveau d'exigence sur l'UX. Cette pratique permet de satisfaire l'utilistateur mais également de s'assurer qu'il prenne plaisir à utiliser notre application.
+
+En 2020, Google annonce vouloir intégrer l'année suivante, dans ses outils de performances et de métriques, trois nouveaux signaux permettant de caractériser et de mesurer cette expérience utilisateur.
+
+Ces signaux sont regroupés sous le nom de Core Web Vitals et sont les suivants: - LCP (Largest Contentful Paint) - CLS (Cumule Layout Shift) - FID (First Input Delay)
+
+Mais que signifient concrètement ces métriques ? Comment les déboguer et les optimiser et ainsi rendre notre application agréable à utiliser ?
+
+A travers ce talk, je répondrai à ces questions et présenterai également un quatrième signal encore en cours d'expériementation: INP (Interaction to Next Point)
+----
+
+== VENDREDI
+
+=== 10h45 - 11h30 : Clean as You Code your projects
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/9291682a7cbf48db8bceee5f735fbfa36f58062e/nolwenn_cadic[Nolwenn Cadic], https://cfp.devoxx.fr/2023/speaker/329dd8c114f832682b37834d9ad9acd67f8d4dd8/marco_comi[Marco Comi]
+
+*Nolwenn* : Nolwenn fait partie de l’équipe SonarCloud où elle fait du développement Java. Elle a rejoint l’équipe il y a un an. Elle y cultive son goût du Clean Code et le met en pratique tous les jours. Avant l’aventure SonarSource, elle a travaillé 2 ans comme développeur full stack Java et React.
+
+*Marco* : Marco Comi est un Chef de Produit avec plus de 13 ans d'expérience dans l'industrie du logiciel. Il a commencé sa carrière comme ingénieur logiciel, où il a développé une profonde appréciation du Clean Code et de l'importance de soutenir les développeurs dans leur quête pour l'écrire. Il a ensuite travaillé comme Scrum Master, Product Owner et finalement a effectué la transition vers la gestion de produits. Il travaille chez SonarSource et supervise le développement de SonarLint depuis 2020.
+
+Twitter : @marcocomi85
+
+Blog: https://www.sonarsource.com/
+
+----
+On veut tous un code de qualité - “Clean Code”. Mais à mesure que notre code et nos équipes s'agrandissent, il peut être difficile de maintenir cette norme. Dans cette présentation, nous aborderons les bénéfices du “Clean Code” et comment vous concentrer sur ce point aidera votre organisation et vous même à prospérer. Nous approfondirons le concept de “Clean as You Code” et les outils qui garantissent un code adapté au développement et à la production.
+----
+
+=== 11h45 - 12h30 : Bootiful Spring Boot 3
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/2dbb394783ed227a5fd8e7f19001a29f8c2d31c2/josh_long[Josh Long]
+
+*Josh* : Josh (@starbuxman) is a Spring Developer Advocate at VMware, an open-source hacker, book/video author, Java Champion, Kotlin Google Developer Expert, and speaker
+
+Twitter : @starbuxman
+
+Blog: http://www.joshlong.com
+
+----
+Spring Framework 6 and Spring Boot 3 are here, and you know what that means. New baselines and new possibilities! Spring Framework implies a Java 17 and Jakarta EE baseline and offers new support for building GraalVM-native images and a compile-time component model in the new Spring AOT engine. It also offers a new observability layer, declarative HTTP and RSocket clients, preliminary Project Loom and CRaC support, Problem-Details support, and so much more. Join me, Spring Developer Advocate Josh Long (@starbuxman), and we'll look at next-gen Spring.
+----
+
+=== 11h45 - 12h30 : Writing Greener Java Applications
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/992ae4b323df97c0405aa5588cfaea1045ad0602/holly_cummins[Holly Cummins]
+
+*Holly* : Holly Cummins is a Senior Principal Software Engineer on the Red Hat Quarkus team. Before joining Red Hat, Holly was a long time IBMer, in a range of roles from cloud consultant, full-stack javascript developer, WebSphere Liberty devops architect, JVM performance engineer, to innovation leader. Holly led projects for enormous banks, tiny startups, and everything in between. Holly has used the power of cloud to understand climate risks, count fish, help a blind athlete run ultra-marathons in the desert solo, and invent stories (although not at all the same time). Holly is also a Java Champion, author, and regular keynote speaker. You can follow her on twitter at @holly_cummins or at hollycummins.com.
+
+Twitter : @holly_cummins
+
+Blog: http://hollycummins.com
+
+----
+The code we write has a climate impact. But how big is that impact? How do we measure it? How do we reduce it? Is the cloud helping? What’s going on with Virginia? Are we still allowed to do CI/CD? Will native compilation save us? Is Java even a good choice anymore? This talk discusses some of the trade-offs for a modern software developer, and provides a roadmap to figuring out the right thing.
+
+Disclosure: Holly works on Quarkus. Along the way, she will talk about Quarkus sustainability measurements we’ve been doing … but it’s ok, because she promises that the Quarkus carbon data is exciting and interesting.
+----
+
+=== -------------------- REPAS --------------------
+
+=== 13h30 - 14h15 : Le multi-tenancy chez Apache Kafka, navigation dans un sujet majeur
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/eb1223f6cde5906f7ac2fb5efd83375a56880ad8/florent_ramiere[Florent Ramière], https://cfp.devoxx.fr/2023/speaker/f3f156a480be59b1498a470ac9a64a309e99962e/francois_teychene[François Teychene]
+
+*Florent* : Florent Ramière a plus de vingt années d'expérience dans le développement logiciel et la conduite de projets informatiques. Après plus de 10 ans d'entrepreunariat, Florent à rejoint la société Confluent la société derrière Apache Kafka où il a accompagné pendant 5 ans les grands comptes en Europe. Il s'occupe désormais de simplifier l'usage du streaming chez Conduktor.
+
+Twitter : @framiere
+
+Blog: https://conduktor.io
+
+*François* : Cloud Developer @ Conduktor, meetup addict & organizer @ Montpellier, SunnyTech team.
+Développeur couteau suisse pouvant intervenir du Javascript à la table de routage. Mes passions actuelles sont le Rust, le DevOps et la programmation fonctionelle
+
+Twitter : @fteychene
+
+Blog: https://www.fteychene.xyz/
+
+----
+Quand Kafka devient progressivement le « système nerveux central pour les données », la simplicité des brokers peut passer d'une bénédiction à une malédiction. Les services qui étaient auparavant découplés doivent de plus en plus se connaître les uns les autres pour éviter les problèmes de collisions: topic, consumer groups, schema, connecteurs, métadonnées etc.
+
+Chez Conduktor, nous avons eu le défi d'accueillir des milliers de tenants Kafka performants et isolés.
+
+Pour trouver une solution viable et économique, nous avons exploré un large éventail de solutions possibles, notamment :
+
+Plus de clusters Kafka - Chaque nouveau service peut-il avoir son propre cluster?
+Convention - Choisissez des prefix, des headers, etc. pour éviter les conflits
+Application côté client - Personnaliser les clients pour garantir la compatibilité
+Application côté serveur - Configurez les brokers pour n'autoriser que les clients qui se comportent correctement
+Proxy - Un outil efficace
+Embarquez avec nous dans un voyage d'idées, de leçons et de solutions sur la façon dont nous avons résolu le multi-tenancy et comment vous pouvez l'appliquer à presque tous les déploiements Kafka.
+----
+
+=== 15h30 - 16h15 : L'étonnante efficacité des petits pas
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/3110faf2bcbb504f5395a237b5e176c6006266f7/philippe_bourgau[Philippe Bourgau]
+
+*Philippe* : Coach eXtreme Programming et Hacktivist du rythme soutenable !
+
+La vie est trop courte pour perdre son temps! J'aide les développeurs à atteindre un rythme soutenable et une productivité durable grâce au refactoring continu de leur code, mais aussi de leur environnement de travail !
+
+Je travaille actuellement à Murex
+
+Twitter : @pbourgau
+
+Blog: https://philippe.bourgau.net
+
+----
+"Qui va lentement va surement !"
+
+Changement de spec, changement du code, perte de connaissance, changement de techno, changement d'équipe, changement du marché … Ecrire du code est complexe ! Dans un environement complexe, il faut avancer par petit pas. Coder par petit pas, c'est découper les taches de développement en petits incréments.
+
+Assistez à ce talk pour comprendre pourquoi coder en petits pas est LA pratique que vous devriez apprendre MAINTENANT ! En plus :
+
+Vous partagerez vos histoires de développement par petit pas.
+Vous entendrez comment je suis tombé dans la marmite des petits pas !
+Vous découvrirez comment les petits pas impactent d'innombrables aspects de notre travail : Test, Commit, Qualité, Risque, CI, CD, Priorisation, Rythme, Fatigue, Travail en équipe, Suivi du travail, Legacy, et Refactoring ...!
+Vous comprendrez pourquoi les petits pas sont importants grâce à la théorie Cynefin.
+Vous apprendrez comment prendre des petits pas, même dans un environement difficile !
+Vous poserez un premier pied sur le chemin des pas toujours plus petits.
+Venez (re-)découvrir la compétence la plus sous-estimée du développement !
+----
+
+=== 15h30 - 16h15 : Ré-architecturer vos traitements batch avec Domain-Driven Design
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/077fefa4e0d5dc0ae0bdf782670e24b744e47fd5/dorra_bartaguiz[Dorra Bartaguiz], https://cfp.devoxx.fr/2023/speaker/0499a99ad2f1d4c024bc3c433d9c05f0dbc55ea4/cyrille_martraire[Cyrille Martraire]
+
+*Dorra* : Dorra est VP Tech chez Arolla, co-auteure du livre Software Craft (édition Dunod), rédactrice en chef du numéro spécial 100% féminin chez Programmez! (245 Janvier 2022) Elle est passionnée par le développement et les bonnes pratiques. Elle partage son savoir-faire en publiant des articles et en animant des conférences et meetups. Elle a aussi enseigné dans une école d'ingénieurs à Paris pendant des années.
+
+Twitter : @DorraBartaguiz
+
+Blog: https://www.arolla.fr/blog/author/dorra-bartaguiz/
+
+*Cyrille* : Développeur depuis 1999, Cyrille est auteur du livre Living Documentation (Addison-Wesley) et CTO co-fondateur de la société Arolla, qui rassemble 90 développeurs passionnés de code bien écrit et bien testé. Il a fondé la communauté Paris Software Crafters en 2011 pour partager son enthousiasme de TDD, BDD et DDD, et intervient fréquemment depuis comme orateur dans des conférences en Europe et parfois au-délà.
+
+Twitter : @cyriux
+
+Blog: http://cyrille.martraire.com/
+
+----
+Même en 2023, les batches (traitements par lots) sont toujours bien présents dans les systèmes informatiques ! Pourtant il est rare d'en parler avec fierté ; ils sont régulièrement sources de frustrations, au point que certains voudraient les voir disparaitre. Quel avenir meilleur imaginer pour vos batches existants ? Lors de cette session, qui s'appuie sur des projets réels, vous découvrirez comment refactorer ou ré-architecturer vos batches en empruntant à l'état de l'art de la conception logicielle, dont Domain-Driven Design. Vous verrez comment les notions d'agrégat, de decorators, d'invariants, de domain models peuvent améliorer la performance, l'observabilité, la reprise sur erreur et la maintenabilité d'ensemble de vos batches, et quel équilibre viser entre batches et orientation event-driven.
+----
+
+=== 16h45 - 17h30 : Comment réconcilier sécurité et agilité pour le bien de vos applications
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2023/speaker/54ba97d7e48afa7736c8914c75cba11943aaae9a/fouad_chmainy[
+Fouad Chmainy], https://cfp.devoxx.fr/2023/speaker/3602bd559e50ff6000912d6f2da30934d9b5f27f/alexis_da_costa[Alexis DA COSTA]
+
+*Fouad* : .
+
+Twitter : @fchmainy
+
+Blog: Https://www.f5.com
+
+*Alexis* : Solution Engineer
+
+Blog: https://f5-k8s-ctfd.docs.emea.f5se.com
+
+----
+Un rythme de livraison toujours plus rapide, toujours plus d’exposition aux cyber-attaques pour vos applications et vos APIs, un écosystème toujours plus riche et complexe… Comment NGINX/F5 peut vous aider dans vos projets DevOps en réconciliant simplement la sécurité avec vos process GitOps
+----
