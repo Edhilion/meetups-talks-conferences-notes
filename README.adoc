@@ -1,0 +1,3 @@
+= Notes de conférences
+
+Un repo pour les rassembler toutes.
