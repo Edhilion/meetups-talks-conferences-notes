@@ -35,6 +35,209 @@ endif::[]
 
 toc::[]
 
+== MARDI
+
+=== Retour XP DDD
+
+==== Abstract
+
+.Speakers : Thierry (CLEVER AGE)
+
+===== Intro : Enjeu du DDD
+
+Permet de créer sur le long terme des logiciels dont le métier est complexe.
+
+[source]
+----
+Domaine ---> Bounded Context ---> Domain Model
+    |                 |                 ^
+    -------> Glossaire partagé ---------|
+----
+
+*Quelles applications ?*
+
+* Refonte d'une brique existante ou monolithe : qu'est-ce qu'il fait ?
+* Nouvelle application : éviter de réinventer la roue
+* Architecture de l'entreprise : ça quoi fait quoi, approche service métier rendu plutôt que noms des applis
+
+*Refonte d'une brique existante*
+
+Difficile à maintenir, couplage fort, etc.
+
+*Décomposition d'un monolithe*
+
+Trop souvent, on décompose en µservices via une approche technique (même The rock in car "I build µservices. Using DDD ?")
+
+*Nvlle App*
+
+Découpage vertical, duplication, reinvention de la roue, hors archi existante (même The rock in car "I build apps. Using DDD ?")
+
+*Archi d'entreprise*
+
+Vision découpage technique -> vision découpage métier
+
+*Le DDD est une philosophie !*
+
+Approche de conception d'archi pour répondre à des besoins qui vont évoluer : communication !
+
+(voir bouquin DDD et agilité)
+
+*Apports*
+
+* Élaboration d'un modèle utile
+* Compréhension affinée de l'entreprise
+* Implication des experts du métier à la conception du logiciel
+* Expérience utilisateurs améliorée
+* Frontières nettes
+* Archi d'entreprise mieux organisée
+* Modélisation itérative, agile
+* Mise en place de nouveaux outils (event sourcing, archi µservices, etc.)
+
+*Trois phases !*
+
+DDD exploratoire -> DDD stratégique -> DDD tactique
+
+Comprendre, Découvrir -> Décomposer, Connecter, Strategize, Organiser -> Définir, Coder
+
+*Casser gap métier/technique*
+
+-> Se comprendre : l'ubiquitous language
+
+Pouvoir se comprendre à tout niveau : échanges, backlog, tests, équipes, code ! Tous le partagent ! Glossaire spécifique au métier, avec des noms, verbes et adjectifs, dans une langue universelle à l'entreprise.
+
+Définir Domain terme, Known aliases, Domain description, Subtypes (quelque soit support de ces infos).
+
+====== Concepts
+
+*Domaine* : le contexte dans le monde réel. Ce pourquoi le logiciel existe.
+
+===== DDD exploiratoire
+
+Découverte du domaine : modélisation collaborative et visuelle. Obtenir vision d'ensemble et alignement de cette vision.
+
+*Domain splitting*
+
+*Point d'entrée* : modèle de domaine soigneusement conçu : on ne parle pas solution/ direction technique. Néanmoins, on garde à l'esprit les contraintes techniques.
+On va aussi se poser les questions clefs dès le début : la gestion de la sécurité entre autres.
+
+1. Domain Model -> 2. Identify candidates < -- > 3. Validate candidates -> 4. Technical architecture
+
+1- Vous faites quoi ? Quelles entités, quelles capacités ? Identifier les briques avant de voir les architectes d'entreprise pour savoir si le service est déjà rendu (trouver des biais pour évangéliser : séminaires, mise en avant des réussites, etc.)
+
+2- Quel est mon catalogue de micro-services
+
+3-
+
+4- Quelle cible technique (api, apps, etc.), quelle infrastructure ?
+
+*Bénéfices*
+
+* Améliore la communication : moins de risques de malentendus, amélioration des connaissances (termes communs, définitions, appropriation du domaine)
+* Chaque domaine possède ses propres responsabilités
+* Vision d'architecture flexible
+* Plug-in - plug-out
+* On peut affecter une équipe à un domaine métier (*voir avec Nico*)
+
+Le *domain model* est communiqué aux :
+
+* experts du doamine
+* business analysts
+* utilisatuers
+* concepteurs UX : logiciel
+* architectes
+* devops
+* devs
+
+*Initiation des Bounded contexts* (sans les valider)
+
+====== Deux phases
+
+*Découverte*
+Plusieurs moyens
+
+* Story mapping
+** Quelles données ensemble
+** Identifier le langage
+** Anticiper les problématiques techniques (d'où présence "lead" dev)
+** Recherche d'agrégats
+
+* Example mapping
+** Identifier langage universel
+** Identifier les données et transactions à isoler à terme
+
+* Capability mapping (permet de décrire ce que fait un produit ou une entreprise de manière statique)
+** À creuser en profondeur !
+
+* D'autres méthodos
+** Domain Storytelling
+** User journey mapping
+** Business model canvas
+** Personae
+** etc.
+
+Dans tous les cas, il faut du brainstorming !
+
+Objectif : des flèches et des bubulles !
+
+*Raffinage du Domain Splitting*
+
+Go Event storming !
+
+Approche DDD exploratoire par A. Brandolini : brainstorming communicatif en partant des événements (nos Domain Events, techniquement potentiellement dans un pool de messages ou d'events).
+
+4 à 10 personnes, 3 à 6 heures, 20 min de préparation.
+
+Trouver les personnes qui *connaissent les questions à poser* et celles qui *connaissent les réponses*.
+
+
+===== DDD stratégique
+
+Architecture : Bien diviser les Bounded contexts (bien les diviser), les intégrer via des événements (domain events), indentifier les *domaines clefs* et identifier ces domaines.
+
+_Présentation par les exemples_
+
+===== DDD Tactique
+
+Conception technique : créer des modèles que s'alignent sur la compréhension partagée du domaine (entities, value types, etc.), communication par message.
+
+_Focalisation Bounded context_
+
+On veut des limites claires (par exemple, une API). On veut donner de l'autonomie en bâtissant des frontières.
+
+_Un BC constitue une frontière autour d'un *modèle* et de son *langage* métier conçu dans un but précis_
+
+* À l'intérieur, ubiquitous languauge
+* Modèle clair, but précis, règles cohérentes
+
+Glossaire : un par BC (par ex. ajouter une colonne de "domaine", mais les alias sont faits pour ne pas être réutilisés
+
+
+PUTAIN DE PERTE DE DONNÉES !
+
+_Creuser µ-frontend, équipes découpées par métier et validation d'un µservice_
+
+*DDD Objects*
+
+*Entités* : objects définis dans le deomain de l'application, unique, cycle de vie, identifiant
+*Value objects* : objet qui représente un concept , utiles mais pas forcément métier (pas uniques)
+*Services* : ni l'un ni l'autre (ex. calcul, mise à jour de stock, etc.)
+
+*Aggrégats* : regroupement d'objets DDD (ex. une commande), il a forcémentu un seul point d'entrée, il a une racine (le root entity) seul accesible depuis l'extérieur
+
+*Repository* : s'assure que l'aggrégat reste dans un état consistant, utilisé pour garantir la transaction
+
+*Domain event* : sont publiés quand une donnée change, utilisé pour des logiques Capture Data Change,
+
+
+
+===== Conclusion
+
+Une approche pour concevoir des architectures,qui répond à des besoins complexes et qui évoluent. Ne peut exister qu'à travers une collaboration. Est une manière de penser lors de la conception.
+
+=== Références diverses
+
+* DDD crew
+
 == MERCREDI
 
 === Présentation du salon
@@ -42,73 +245,9 @@ toc::[]
 * https://www.devoxx.fr/, du 12 au 14/04/2023
 * Et c'est parti pour Devoxx France 2023 !
 
-=== 09h30 - 12h30 : Avancez avec HashiCorp Vault, au mépris du danger, là où aucune solution de sécurité n'a osé aller jusqu'alors !
-
-==== Abstract
-
-.Speakers : https://cfp.devoxx.fr/2023/speaker/924b2b8bb33e52d196d85ec6133f3f0a071faa5f/willy_malvault[Willy malvault], https://cfp.devoxx.fr/2023/speaker/70f22ea5d017da467b2f21ea4348808af054fe43/sven_szejwach[Sven Szejwach]
---
-*Willy* : Responsable d'offre, évangéliste, architecte et coach {Cloud Native, Cybersécurité} chez Sogilis à Grenoble. Je suis titulaire d'un doctorat en informatique distribuée (INRIA 2011). Mon kif c'est la vulgarisation, le théâtre d'impro et la communication. Je me suis donc lancé naturellement dans les talks il y a déjà quelques années, et je propose même du coaching/peer reviewing pour les speakers tech.
-
-Accessoirement organisateur du Snowcamp depuis 2022.
-
-Twitter : @wmalvault
-
-Blog: https://blog.sogilis.fr/
-
-*Sven Szejwach* : CTO at Squarescale, fiddling enthusiast, automation expert and DevOPS aficionado
-
-Twitter : @SSZEJWACH
-
-Blog: https://www.squarescale.com
---
-
-----
-Comment démarrer une chaîne de confiance ? Comment gérer automatiquement la rotation de vos secrets et clés de sécurité (révocation et renouvellement) ? Comment éviter d'avoir un compte partagé par tous vos services pour accéder à la base de données ? Comment en finir avec les Post-It de mot de passe collés sous le clavier de vos collègues ?
-
-Si ces sujets vous hantent toutes les nuits, la cybersécurité est un sujet qui vous tient à cœur !
-
-Rejoignez-nous dans ce workshop autour de Hashicorp Vault et des bonnes pratiques de sécurité dans le cloud. Venez découvrir comment opérer un cluster Vault, comment intégrer une nouvelle application dans votre chaîne de confiance, comment établir une stratégie de policies et encore beaucoup de choses indispensables à la sécurité.
-
-Une stack de test sera mise à disposition pour tous les participants (Docker par défaut, puis une stack auto-hébergée, en fonction des envies et appétences des participants).
-----
-
-==== Notes
-
-NOTE: Une note
-
-===== Thème 1
-
-foo
-
-===== Thème 2
-
-bar
-
-=== 09h30 - 12h30 : Value types et Pattern matching : 1 partout, données au centre
-
-==== Abstract
-
-.Speakers : https://cfp.devoxx.fr/2023/speaker/70365c89d2a734da0d24d091f7ec0af77ba90701/jose_paumard[José Paumard], https://cfp.devoxx.fr/2023/speaker/b967a0dc26fb6feaaa8795f375103b0d7aff319e/remi_forax[
-Remi Forax]
-
-*José* : José est membre du Java Platform Group chez Oracle en tant que Java Developer Advocate. Il a été maître de conférences à l'université Paris 13 pendant 25 ans et est intervenu auprès de sociétés en formation et expertise. Il anime le blog technique "Java le soir" et contribue à divers projets Open source. Impliqué dans la communauté Java, il est trésorier de l'association BJPC, organisatrice des soirées du Paris JUG et cofondateur de Devoxx France qu'il a coorganisé les 3 premières années. Java Champion, plusieurs fois Java Rockstar speaker régulier pour Devoxx (FR, BE, UK), JavaOne, de nombreux JUG francophones, il est également auteur pour Java Magazine.
-
-Twitter : @JosePaumard
-
-Blog: http://blog.paumard.org/
-
-*Rémi* : Java Plombier, Maitre de Conférence, Virtual Machine Whisperer, martirise ses pauvres étudiants, complexifie Java en étant experts pour les JSR 292, 335 et 376, développe des librariries et langage dynamiques open source utilisés ou pas.
-
-Twitter : @over_my_dead_body
-
-Blog: http://forax.github.io/
-
-----
-La modélisation de données en Java est l'un des aspects du langage qui a très peu évolué depuis 15 ans. Les choses changent, puisque Valhalla commence à publier des éléments intéressants. La version LW5 apporte des classes primitives et des value classes. Le projet Amber remet les données au centre des applications : les records permettent de meilleures modélisations, et le Pattern Matching ainsi que les Types Scellés permettent de mieux écrire les traitements. Dans le futur, Valhalla permettra d'unifier les types objet et les types primitifs et de gérer différemment les valeurs nulles. Amber va continuer de développer le pattern matching avec les déconstructeurs pour les classes classiques et les patterns nommés. Ces nouvelles approches vont apporter de nouvelles façons d'organiser les applications, de mieux distribuer le code en modules indépendants, de créer des données sous de nouvelles formes et d'avoir de meilleures performances pour nos traitements en mémoire.
-----
-
 === 09h30 - 12h30 : Docker Compose 101
+
+_Filmé_
 
 ==== Abstract
 
@@ -128,11 +267,7 @@ Twitter : @ndeloof
 
 Blog: https://blog.loof.fr
 
-*Djorje* : Staff Software Engineer at Docker, loves making developer tools
-
-Twitter : @rumpl
-
-Blog: https://rumpl.dev
+*Poulpy !* : Poulpe en peluche
 
 ----
 Vous avez déjà entendu parlé de Docker Compose ? Peut être l'utilisez vous déjà un peu ?
@@ -142,35 +277,193 @@ Depuis un exemple simple, nous aborderons toutes les astuces pour être un déve
 
 Et qui sait, peut être que nous irons même jusqu'à déployer une application WebAssembly.
 ----
+
+==== Application  Avatars
+
+dockerfiles api et web pour avoir les conteneurs sans tout booter.
+
+`docker buildx build -t api -f ./deploy/api.dockerfile`
+
+`docker run -d -p ...:... api`
+
+Idem "web".
+
+Trop chiant, go compose file.
+
+*Service* : permet de définir un ou des containers. Ils sont définis par des images, et portent des conteneurs déjà paramétrés.
+https://github.com/compose-sepc/compose-spec/blob/master/05-services.md
+
+Compose peut builder !
+
+----
+api:
+    build:
+        context: . (chemin relatif au niveau de build)
+        dockerfile: ./deploy/api.dockerfile
+    envrionnement:
+        - DB_PASSWD=toto
+    ports:
+        - 5734:80
+
+web:
+    build:
+        context: . (chemin relatif au niveau de build)
+        dockerfile: ./deploy/web.dockerfile
+    ports:
+        -5735:5173
+----
+
+Noms : préfixés par le nom du répertoire (par défaut), suffixés par le numéro du conteneur.
+
+COMPOSE VERSION LEGACY EN PYTHON : FIN EN JUIN 2023 !!!
+
+==== Network
+
+`docker compose config` (network à pour valeur par défaut null, mais c'est juste son nom par défaut)
+
+Un network permet de catégoriser un ensemble d'adresses IP et les relie entre elles pour former un réseau.
+
+Comment bloquer l'accès à la base de données depuis le FE ?
+----
+    api:
+        networks:
+            - private (nommage libre, "private" pour l'exemple)
+
+    db:
+        networks:
+            - private
+
+    web:
+        networks:
+            - private
+            - public
+
+    networks:
+        public:
+        private:
+            internal: true
+----
+
+==== Secret
+
+Pour éviter les mots de passe en clair (entre autres). C'est donc un répertoire / fichier / variable d'env à passer au conteneur. On doit signifier sa nature et sa source.
+
+----
+    db:
+        environnement:
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_password
+        secrets:
+            db_password:
+                file:~/DB_PASSWORD (le fichier ne contient que toto)
+
+    api:
+        secrets:
+            - db_password
+
+----
+
+==== Startup order
+
+`depends_on` via `condition` et `restart`
+
+`healthcheck` via la commande `Test`, `Interval`, `timeout`, `restart` et `start_period`.
+
+----
+    db:
+        healthcheck:
+            test: mysqladmin ping...
+            interval: 2s
+            timeout: 3s
+            start_period: 3s
+
+    api:
+        depends_on:
+            db:
+                conditions: service_healthy
+----
+
+==== Init de la BDD : les profiles
+
+----
+    init:
+        profiles:
+            - init
+        image: mysql
+        command: sh -c 'mysql -h db ... < /var/db_init'
+        configs:
+            - source : db_init
+              target : /var/db_init
+        secrets:
+            db_password
+        networks:
+            private
+        depends_on:
+            db:
+                condition: service_healthy
+
+    configs:
+        db_init:
+            file: init.sql
+----
+
+`docker compose run init`
+
+
+==== Volumes
+
+Data stores persistent : driver, nom, label, interne ou externe. Descrption : montage, target path, mode d'accès
+
+----
+    db:
+        volumes:
+            - db_data:/var/lib/mysql (binding)
+
+    volumes:
+        db_data:
+----
+
+==== Composition de compose
+
+Par convention, `compose.override.yml`.
+
+----
+    web:
+        extends:
+            file: compose-youpi.yml
+            ...
+----
+
+Utilisation des ancres en yml ?
+
+==== Configuration des déploiements et ressrouces
+
+deploy et sa sous-section resources (minimum et limites) !
+
+==== Build
+
+En CI, possibilité de pull des images au moment du build, et de push.
+COnnexion par ssh.
+
+==== Watch
+
+On peut rajouter des 'x-' qui sont ignorés par le parser.
+
+`docker compose alpha watch`
+
+----
+    api:
+        x-develop:
+            watch:
+                - patch: api/
+                  action : sync
+                  target: /app/api
+----
+
+
+==== Hints
+Voir Docker Desktop
+
 === -------------------- REPAS --------------------
-
-=== 13h30 - 16h30 : Automatisez vos tests utilisateurs avec Cypress
-
-==== Abstract
-
-.Speakers : https://cfp.devoxx.fr/2023/speaker/210426e5a743e1f220b73216b59a3809d92c2094/gerome_grignon[Gérôme Grignon], https://cfp.devoxx.fr/2023/speaker/97df1276e896faedcc0ed30e58c5905679478c9b/anthony_pena[
-Anthony Pena]
-
-*Gérôme* : Développeur Web chez SFEIR.
-Consommateur de projets open-source le jour, contributeur la nuit.
-
-Head of OSPO @SFEIR Stackblitz Community Advocate
-
-Twitter : @GeromeGrignon
-
-*Anthony* : Codeur et blogueur le jour et dévoreur de manga la nuit, vous me verrez souvent parler de Java, JavaScript, Typescript, Rust ou de test, parfois un peu (beaucoup) de jeux-vidéos ou de bricolage de console.
-
-Twitter : @_Anthony_Pena
-
-Blog: https://k49.fr.nf
-
-----
-Poussez la porte pour venir découvrir avec nous un outil de testing end-to-end pensé par et pour les développeurs.
-
-Aujourd’hui plesbicité par la communauté, Cypress est la promesse tenue d’une solution pour en finir avec les tests e2e longs et lents, allant jusqu’à proposer aujourd’hui une fonctionnalité de component testing.
-
-Pendant cet atelier, nous explorerons ensemble une application web grâce à Cypress au travers de différents parcours utilisateurs pour découvrir les possibilités offertes par ce framework, ainsi que ses limitations.
-----
 
 === 13h30 - 16h30 : (Slow (code) retreat)
 
@@ -215,40 +508,6 @@ Plus d'entraide
 Venez tester notre slow-dojo!
 ----
 
-=== 13h30 - 16h30 : Des tuyaux sur les pipelines
-
-==== Abstract
-
-.Speakers : https://cfp.devoxx.fr/2023/speaker/a2eec3d78572a5e31b354127520841d753284c1d/pierre-antoine_gregoire[Pierre-Antoine Grégoire], https://cfp.devoxx.fr/2023/speaker/5ec0b5afa0f1ef5a7e180acf4f7c6b3a611fcbb7/philippe_charriere[
-Philippe Charrière]
-
-*Pierre-Antoine* : During the 20+ years of my IT career, I've had the possibility to gradually take a few more steps back in order to see the big picture and try to leverage the best from what I've learned in order to (hopefully) achieve neat design and insightful software. On the side I created and am still involved in various open source projects. I am president since 2010 of the Java User Group of Luxembourg (YaJUG), I've spoken in multiple conferences, and co-initiated the Devops Mercenaries, a friendly group of experts focused on improving the collaboration between business, development and operations. I'm also organizing Voxxed Days Luxembourg, the number one development conference in Luxembourg, fully organized by a non-profit organization: YaJUG.
-
-Twitter : @zepag
-
-*Philippe* : Senior Customer Success Engineer at GitLab +
-Plat préféré: Pot au feu +
-Cocktail préféré: Spritz +
-Activités: Geek, Pêche, Cuisine, Série TV +
-Signe particulier: grosse addiction aux emojis +
-GDG Cloud et IOT Lyon co leader +
-BlendWebMix Responsable du comité éditorial technique +
-Ex ScalaIO team member, Ex MixIT team member
-
-Twitter : @k33g_org
-
-Blog: https://k33g.gitlab.io/
-
-----
-Vous avez besoin d'intégrer une chaîne de build, simple ou très élaborée, et de la connecter à une chaîne de déploiement efficace et contrôlée ?
-
-Vous voulez pouvoir observer et analyser l'exécution, la performance, la sécurité de ces flux vitaux pour la dynamique de votre système?
-
-Venez découvrir avec nous comment permettre à la plomberie de votre système de rester saine, performante et adaptable.
-
-Nous allons présenter des concepts et patterns, ainsi que les solutions disponibles pour implémenter l'intégration, l'inspection et le déploiement continus.
-----
-
 === 17h00 - 17h30 : Détectez et corrigez automatiquement les problèmes les plus fréquents avec Apache Kafka
 
 ==== Abstract
@@ -289,6 +548,30 @@ Parmi les problèmes les plus courants, citons les
 Rejoignez-nous pour discuter de ces problèmes, mais surtout des outils qui peuvent être mis en place pour les tuer ... net!
 ----
 
+topic names
+compression.codec à activer
+consumer group names : attention à la collusion
+attention à la latence, ne pas s'appuyer sur le timestamp
+fetch.min.bytes doit être diff de 0
+duplicates ne sont pas idempotents
+
+Que faire ?
+
+Training (RTFM)
+Bring experience
+Build docummentation
+If We can'('t trust humans -: we can't touch Kafka
+ -> ajouter de la magie entre lh'umain et kafka
+
+On étend le protocal Kafka (kafka.apache.org/protocol
+Conduktor playground
+
+Building a proxy
+Let's add a gateway en alternant les metadata. La gateway est stateless !
+
+Gateway opensource chez Conduktor.
+Peut rajouter de la sécu et des bonnes pratiques
+
 === 17h45 - 18h15 : Les secrets internes de Spring
 
 ==== Abstract
@@ -311,25 +594,9 @@ Ces mécanismes n'ont pas changés et toutes les fonctionnalités de Spring repo
 Au delà de ces fonctionnalités, montrer le point commun entre tous, comprendre le cycle de vie d'un bean Spring, et savoir répondre à la question : "A quoi peut servir un BeanFactoryPostProcessor" ?
 ----
 
-=== 18h30 - 19h00 : De la première ligne de code au succès : REX d’un projet open source
+Base : l'inversion de contrôle !!
 
-==== Abstract
-
-.Speakers : https://cfp.devoxx.fr/2023/speaker/b2da3feb97828d6087d24c7f01f4f0a3c1611a1a/flavien_normand[Flavien Normand]
-
-*Carl* : Consultant Angular, Développeur Open Source, Joueur de MMO, Pêcheur, enfin quand j'ai le temps.
-
-Twitter : @Supamiu_
-
-Blog: http://www.flavien-normand.fr
-
-----
-On a tous eu des idées de projets pendant qu'on faisait nos études, mais que faire quand ça marche? Comment on gère l'administratif? Comment on gère l'infra? La communication? La traduction? Et tant d'autres choses auxquelles je n'avais pas pensé.
-
-Dans ce talk, je vous décrit mon parcours semé d'embuches, depuis 5 ans, entre technique et administratif, tout ce que j'aurais aimé savoir quand j'ai lancé mon projet, qui a évolué pour devenir un produit complet, avec 500 000 utilisateurs actifs mensuels, une traduction en 10 langues, une communauté active et un seul développeur: moi.
-----
-
-=== 18h30 - 19h00 : De la première ligne de code au succès : REX d’un projet open source
+=== 18h30 - 19h00 : REX télétravail
 
 ==== Abstract
 
@@ -351,6 +618,52 @@ Blog: http://binout.github.io/javaonemorething/
 🤓 Dans cette présentation, je vous propose un retour d’expérience sur nos méthodes de travail et quelques trucs et astuces qui pourront vous aider.
 ----
 
+Culture de l'écrit
+Transparence radicale
+Pas de réunions, pas de managers
+Responsabilité distribuée
+Travail flexible
+https://medium.com/alan
+
+==== Comm asynchrone
+ENjeux : trnasmission de l'info,Collaboration, alignement sur la stratégie, gestion des notifs
+CHez Alan : tout est écrit, tout est publique (en interne), tout le monde est formé
+Slack : pas de channel privé, pas de message privé
+Slack normé : règles de nommage #crew_xxx, #team_xxx,#announcement
+Utilisation des trheads
+Slack formaté : format des messages (titre, contexte, questions,  actions)
+
+Exemples cools de channels
+#Thread pour soi
+#Team rétro
+#Team praise (remerciements))
+
+*Processus de décision*
+Discussion Github pour prise de décision
+
+* Pourquoi
+Contexte et timeline
+Présentation
+Ping des collgues
+Attentes des contributions
+Prise en conte des remarques
+JE concluen en actant une décision
+
+Puis on documente via Notion : la vérité du moment
+
+*Autonomie*
+
+Autoformation, cohérence globale, gestion du temps, chercher vs demander de l'aide
+
+Tests unitaires pour les design d'archi
+Tests unitaires des TODO
+
+Le message d'erreur doit aider à résoudre le problème
+
+*Automatisation*
+
+Slack bot de respect de process
+
 == JEUDI
 
 === 10h45 - 11h30 : Hypermedia IRL
@@ -363,7 +676,7 @@ Blog: http://binout.github.io/javaonemorething/
 
 Blog: https://www.cosium.com/
 
-*Hugo* : ?
+*Hugo* : Dev Cosium depuis 4 ans
 
 ----
 Dans un souci de recherche de la meilleure stack pour ses APIs, Cosium a choisi de migrer ses APIs HTTP dites "classiques" (REST niveau 2) vers une contrainte d'architecture hypermedia (REST niveau 4).
@@ -372,6 +685,43 @@ L'utilisation d'HATEOAS (Hypermedia As The Engine Of Application State) semble e
 
 Cette présentation a pour but de montrer comment nous arrivons à exposer une API hypermedia avec Spring HATEOAS, à la consommer avec Ketting.js, et combien il peut être facile de tirer avantage de la flexibilité fournie par cette architecture.
 ----
+
+Principe de base : se déplacer dans l'API via des liens.
+
+*Avantages*
+
+* expose les relations entre objets métier
+* API "introspectable"
+* *concentrer la logique métier dans le BE*
+* découpler le client du serveur
+
+(voir ketting.js)
+
+*Spring HATEOAS*
+
+Gère HAL et HAL-FORMS.
+
+REST 2 : manque d'infos aux réponses (ex. pas infos de pagination), obligation de récupérer un id (qui n'est pas une notion métier)
+
+Hypermedia : go URI (RFC-3986).
+
+Check de permission dans la Representation (DTO)
+
+*Ketting.js*
+
+* client http basé sur fetch natif du navigateur
+* gère HAL et HAL-FORMS
+* open source
+
+*Limites*
+
+* HAL-FORMS est en draft
+* On doit adapter le client
+* Pas populaire (pas de support)
+* besoin de détourner le default pour le rendre inutile
+* utiliser le prefer header (RFC 7240)) fournit par la requête, pour faire une représentation "minimal"
+
+https://github.com/Cosium/hypermedia-irl-presentation
 
 === 11h45 - 12h30 : Bien choisir sa base de données
 
@@ -392,6 +742,12 @@ Blog: https://www.takima.fr/
 ----
 RDBMS ? Orienté colonnes ? Documents ? Timeseries ? Graphes ? Distribué ou non ? Pas facile de faire le bon choix lorsqu’on est perdu dans toutes ces notions. Dans ce talk, on est là pour t’aider à faire le meilleur choix de base de données pour ta prochaine application ! Comme la solution universelle n’existe pas, on va plutôt te présenter différents critères de choix, les pièges et antipatterns qu’il faut éviter, ainsi qu’une lecture analytique de chaque type de DB. On va notamment parler des grands types de bases de données, de transactions et de distribution de la donnée. En sortant, tu te poseras les bonnes questions pour choisir ta BDD et tu n’auras pas besoin de chercher à faire des jointures dans Elastic !
 ----
+
+*Axes de décision*
+
+photo
+
+
 
 === 13h00 - 13h15 : Single Sign On en 15mn sans modifier son code
 
@@ -468,7 +824,7 @@ Dans ce talk, on vous présente un retour d'expérience sur notre utilisation, c
 Bref, un petit melting pot des choses à faire et à ne pas faire avec Kafka d'après notre expérience.
 ----
 
-=== 15h30 - 16h15 : 5 ans de bien et de moins bien avec Kafka
+=== 15h30 - 16h15 : DevOps est mort
 
 ==== Abstract
 
@@ -482,22 +838,6 @@ Blog: http://www.jfrog.com/
 
 ----
 Après 14 ans de DevOps, il est temps pour nous de regarder ce qui font les forces et les faiblesses du mouvement DevOps. Il y cinq ans, nous avons écrit le livre “Liquid Software”. Nous étions sûrs qu’aujourd’hui la vision serait âgée et dépassée, mais elle est plus que jamais un facteur déterminant dans le succès d’une transformation digitale. Dans cette session, je parlerai du présent et du futur du DevOps dans notre industrie changeante, et comment votre entreprise peut bénéficier au maximum du mouvement DevOps.
-----
-
-=== 15h30 - 16h15 : Ah, tu peux faire ça en CSS maintenant ?
-
-==== Abstract
-
-.Speakers : https://cfp.devoxx.fr/2023/speaker/a6b8edfe906dcb1f594f1037f31a9915739fc0e7/raphael_goetter[Raphael Goetter]
-
-*Raphael* : Webmunster senior. Valérie Damidot du HTML, MacGyver du CSS, Cristina Cordula chez Alsacreations. Ambassadeur du Lorem Ipsum alsacien, amateur de picon-bière et lauréat de la Bretzel d'Or 2017 (si si, c'est vrai !) et accessoirement formateur, conférencier et auteur de divers livres sur CSS.
-
-Twitter : @goetter
-
-Blog: http://www.goetter.fr
-
-----
-CSS a bien évolué depuis ses balbutiements en 1996 et les guerres des navigateurs. Simple langage de description à ses débuts, il devient un véritable outil de programmation, embarquant variables, imbrications, conditions et un peu plus chaque jour. Les évolutions sont parfois si nombreuses qu'il est difficile de tout suivre. Ça tombe bien car c'est justement ce qu'on va faire : un rapide panorama d'une 15aine de fonctionnalités modernes mais déjà utilisables en production (variables, sélecteurs, cascade, propriétés logiques, etc.)
 ----
 
 === 16h45 - 17h30 : Auth et systèmes distribués: ne jetons pas le bébé avec l'eau du bain
@@ -530,19 +870,40 @@ les éléments indispensables à mettre en place dans un tel système (rafraichi
 la plateforme biscuit, construite autours de ces use cases.
 ----
 
-=== 16h45 - 17h30 : Comment être condamné par la CNIL
+Authn : authentification
+Authz : autorisation
 
-==== Abstract
+Monolithe : moins de problèmes !
 
-.Speakers : https://cfp.devoxx.fr/2023/speaker/5b5d6616b013accfd7b71222afe5031991352262/juliette_audema[Juliette Audema]
+*Pas d'auth en système distribués !*
 
-*Juliette* : Je m'appelle Juliette, j'ai 31 ans, j'ai fait une reconversion en tant que développeuse à l'automne 2018 avec le bootcamp en Ruby On Rails "The Hacking Project". Je suis originellement diplômée de Sciences Po Grenoble (master Affaires Publiques) et j'ai été chargée de projets dans l'éducation musicale. Actuellement je suis Software Engineer chez Aircall, après avoir travaillé en start-up et dans une agence web. À côté de mon travail, je suis impliquée dans plusieurs communautés de code: les Women On Rails, pour lesquelles j'édite une newsletter (https://womenonrails.substack.com/) et Paris.rb. En-dehors du code j'aime tricoter, broder, coudre, courir et faire du yoga.
+Bon, si pas le choix...
+On veut gérer l'auth en centralisé dans un système décentralisé. Via un service d'auth... mais pas scalable.
 
-Twitter : @ajuliettedev
+Donc si on veut décentraliser, on a les beaers toeksn boring (jwt, paseto), les plus fancys (macaroons, biscuits).
+*Il faut mettre de la révocation de token !*
+Les tokens doivent être uniques ! Il doivent être trackés, avoir une date d'expiration.
+Utiliser le duo access token (durée de vie très courte) et un refresh token (plus long, mais qui ne servent qu'à produire un access token via un service dédié).
 
-----
-Spoiler alert: bien entendu, je ne vais pas vous apprendre à être condamné par la CNIL ! La CNIL a sorti un guide RGPD (Règlement Général sur la Protection des Données) pour l'équipe de développement, où elle donne des conseils aux développeuses et développeurs afin d'être en conformité avec le RGPD, notamment dans le développement. Dans ce talk, nous plongerons dans les bonnes pratiques recommandées par la CNIL et nous verrons aussi différents cas de sanctions données par la CNIL par des entreprises qui ont, elles, été condamnées.
-----
+*Les rotations de clef*
+À prévoir dans le système de base.
+Les faire régulièrement (plusieurs fois par an).
+
+
+*Attenuation offline*
+Consiste à prendre un token est un créer un nouveau avec moins de droit : *Biscuit*. La v2 seulement pour Java pour l'instant (pas encore intégré sur IntelliJ).
+
+*Patterns*
+Auth gateway : une fois la passerelle ok -> YOLO
+Internal calls with request-level restirctions -> inetneal calls with offline attenuaation
+Mixing trust domains
+Token delivery service : très résilent, mais on exposetous les internes du système
+
+biscuitsec.org
+doc.biscuitsec.org
+github.com/biscuit-auth
+
+
 
 === 17h45 - 18h15 : Les post-mortems ou comment sortir heureux d’un carnage
 
@@ -562,50 +923,6 @@ Pour que cela recommence encore la prochaine fois ? Pour que tout le monde en so
 Alors on prend notre courage à deux mains, et on organise un POST-MORTEM. Mais qu'est-ce que c'est ? À quoi cela sert-il ? Et comment le mettre en place ? 🤔
 
 Vous découvrirez dans ce talk les différentes étapes d'un post-mortem réussi et comment l'animer au mieux pour que chacun et chacune puisse être heureux.se après un tel carnage, sans pour autant être psychopathe ! 😌
-----
-
-=== 18h30 - 19h00 : Accélérer vos livraisons d'API avec Microcks
-
-==== Abstract
-
-.Speakers : https://cfp.devoxx.fr/2023/speaker/68a68cee98fb1247378478a3c1aeebd32a6dc91d/laurent_broudoux[Laurent Broudoux]
-
-*Laurent* : Laurent est architecte solution, spécialisé sur les sujets cloud-native mêlant Kubernetes, APIs et Intégration en Enterprise. Laurent a démarré il ya 5 ans le projet Microcks : une plateforme permettant de gérer les mocks et le test de contrat d'APIs et microservices.
-
-Twitter : @lbroudoux
-
-Blog: https://medium.com/@lbroudoux
-
-----
-Les API sont partout ! Création de nouveau produit, intégration client et partenaire, communication frontend à backend, orchestration de microservices : ces cas d'utilisation nécessitent des API. Mais cela s'accompagne de défis : comment obtenir une boucle de rétroaction rapide sur la conception ? Comment permettre à différentes équipes de travailler en autonomie sans avoir à attendre la mise en place d’une API ? Comment faire face aux tests de rétrocompatibilité lorsque vous livrez la version 18.3 de votre API ? C'est exactement le défi relevé par Microcks. Microcks permet aux développeurs de tirer parti de leurs ressources OpenAPI, AsyncAPI, GRPC, GraphQL et Postman pour simuler rapidement des API avant de les écrire !
-
-Dans cette session, nous présenterons brièvement Microcks et son fonctionnement. Ensuite, nous nous plongerons dans la simulation d'une OpenAPI REST et l'exécution de tests de conformité. Nous vous expliquerons comment cela peut aider vos équipes à mieux travailler ensemble. Enfin, nous vous expliquerons comment Microcks prend également en charge les API asynchrones et événementielles.
-----
-
-=== 18h30 - 19h00 : Core Web Vitals: Mettez votre application sur orbite avec les meilleurs pratiques
-
-==== Abstract
-
-.Speakers : https://cfp.devoxx.fr/2023/speaker/192407701786bbf68e9116295ac390c67e1179ae/nicolas_frizzarin[Nicolas FRIZZARIN]
-
-*Nicolas* : Google Developer Expert in Web Technologies and OpenJs Foundation Member, Nicolas is a FontEnd specialist and user Interface Designer from Metz, France.
-
-He works as a Developer Advocate and Engineering Manager at Sfeir Luxembourg. His daily mission is to help the teams to make robust, powerful and beautiful web applications
-
-Besides that, Nicolas is a speaker, and likes to contribute to the community by giving talks, trainings, writing articles or participating in open source projects
-
-Twitter : @Nicooss54
-
-----
-Lorsque l'on développe une application web il est primordial de respecter un certain niveau d'exigence sur l'UX. Cette pratique permet de satisfaire l'utilistateur mais également de s'assurer qu'il prenne plaisir à utiliser notre application.
-
-En 2020, Google annonce vouloir intégrer l'année suivante, dans ses outils de performances et de métriques, trois nouveaux signaux permettant de caractériser et de mesurer cette expérience utilisateur.
-
-Ces signaux sont regroupés sous le nom de Core Web Vitals et sont les suivants: - LCP (Largest Contentful Paint) - CLS (Cumule Layout Shift) - FID (First Input Delay)
-
-Mais que signifient concrètement ces métriques ? Comment les déboguer et les optimiser et ainsi rendre notre application agréable à utiliser ?
-
-A travers ce talk, je répondrai à ces questions et présenterai également un quatrième signal encore en cours d'expériementation: INP (Interaction to Next Point)
 ----
 
 == VENDREDI
@@ -628,21 +945,7 @@ Blog: https://www.sonarsource.com/
 On veut tous un code de qualité - “Clean Code”. Mais à mesure que notre code et nos équipes s'agrandissent, il peut être difficile de maintenir cette norme. Dans cette présentation, nous aborderons les bénéfices du “Clean Code” et comment vous concentrer sur ce point aidera votre organisation et vous même à prospérer. Nous approfondirons le concept de “Clean as You Code” et les outils qui garantissent un code adapté au développement et à la production.
 ----
 
-=== 11h45 - 12h30 : Bootiful Spring Boot 3
-
-==== Abstract
-
-.Speakers : https://cfp.devoxx.fr/2023/speaker/2dbb394783ed227a5fd8e7f19001a29f8c2d31c2/josh_long[Josh Long]
-
-*Josh* : Josh (@starbuxman) is a Spring Developer Advocate at VMware, an open-source hacker, book/video author, Java Champion, Kotlin Google Developer Expert, and speaker
-
-Twitter : @starbuxman
-
-Blog: http://www.joshlong.com
-
-----
-Spring Framework 6 and Spring Boot 3 are here, and you know what that means. New baselines and new possibilities! Spring Framework implies a Java 17 and Jakarta EE baseline and offers new support for building GraalVM-native images and a compile-time component model in the new Spring AOT engine. It also offers a new observability layer, declarative HTTP and RSocket clients, preliminary Project Loom and CRaC support, Problem-Details support, and so much more. Join me, Spring Developer Advocate Josh Long (@starbuxman), and we'll look at next-gen Spring.
-----
+Talk de présentation sonarqube sans intérêt particulier.
 
 === 11h45 - 12h30 : Writing Greener Java Applications
 
@@ -661,6 +964,24 @@ The code we write has a climate impact. But how big is that impact? How do we me
 
 Disclosure: Holly works on Quarkus. Along the way, she will talk about Quarkus sustainability measurements we’ve been doing … but it’s ok, because she promises that the Quarkus carbon data is exciting and interesting.
 ----
+
+Plus d'émission carbone en IT qu'en vol d'avions.
+
+https://principles.green
+
+Setp 1  :electricity source, look what source we use, and where it's produced
+
+Site web : electricity maps !
+
+Choose a better cloud rpovider.
+Faire gaffe à moment de la journée (ex. data center alimenté par panneau solaire )
+
+STep 2 : 4 points
+
+* elasticity : scalability up AND down, surtout pendant la nuit
+* efficiency : quels langages génèrent le moins d'énergie ? C, RUST are good, Python le pire. Java peut être amélioré en le tunant correctement.
+*Quarkus* est petit et rapide, mais... c'est dur de mesurer l'empreinte carbone. Utiliser RAPL pour "estimer" la conso.
+Optimiser vos putains d'algos !
 
 === -------------------- REPAS --------------------
 
@@ -697,6 +1018,18 @@ Application côté serveur - Configurez les brokers pour n'autoriser que les cli
 Proxy - Un outil efficace
 Embarquez avec nous dans un voyage d'idées, de leçons et de solutions sur la façon dont nous avons résolu le multi-tenancy et comment vous pouvez l'appliquer à presque tous les déploiements Kafka.
 ----
+
+Multi-tenancy : grosses boites, maturités forte...
+
+voir ns4Kafka
+
+Utiliser une gateway
+
+Security : Rbac, encryption
+Best Practices : Safeguard (cf talk dédié), transformation, chaos
+
+https://github.com/conduktor/conduktor-proxy-demos
+https://github.com/conduktor/conduktor-gateway
 
 === 15h30 - 16h15 : L'étonnante efficacité des petits pas
 

@@ -41,6 +41,7 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 * Les photos du salon sont visibles ici :
 
 == Buzz words & Technos qui ont le vent en poupe
+DDD
 
 
 == Technos dont on parle moins (ou plus !)
